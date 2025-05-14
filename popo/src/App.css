@@ -1,0 +1,89 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* No Scrollbar - hides scrollbar while keeping functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Custom Scrollbar - styled scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+}
+
+/* Dark mode styles */
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #344054;
+}
+:root {
+  /* ... existing variables ... */
+  
+  /* Firearms Status specific variables */
+  --table-header-bg: #f3f4f6;
+  --edit-btn-bg: #e0e7ff;
+  --edit-btn-color: #4f46e5;
+  --edit-btn-border: #c7d2fe;
+  --save-btn-bg: #dcfce7;
+  --save-btn-color: #16a34a;
+  --save-btn-border: #bbf7d0;
+  --hover-color: rgba(0, 0, 0, 0.02);
+
+  /* Dark mode variants */
+  --dark-table-header-bg: #1f2937;
+  --dark-edit-btn-bg: #1e1b4b;
+  --dark-edit-btn-color: #a5b4fc;
+  --dark-edit-btn-border: #3730a3;
+  --dark-save-btn-bg: #052e16;
+  --dark-save-btn-color: #86efac;
+  --dark-save-btn-border: #166534;
+
+  --primary-color: #4f46e5;
+  --primary-light: #e0e7ff;
+  --danger-color: #ef4444;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+  --success-light: #d1fae5;
+  --success-dark: #065f46;
+  --warning-light: #fef3c7;
+  --warning-dark: #92400e;
+  --status-bg: rgba(0, 0, 0, 0.05);
+
+  /* Button hover states */
+  --edit-btn-hover: #c7d2fe;
+  --save-btn-hover: #bbf7d0;
+
+  /* Dark mode variants */
+  --dark-edit-btn-hover: #3730a3;
+  --dark-save-btn-hover: #166534;
+}

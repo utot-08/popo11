@@ -1,0 +1,376 @@
+:root {
+  --police-blue: #1a237e;
+  --police-blue-dark: #0d1440;
+  --police-gold: #ffc107;
+  --public-blue: #1976d2;
+  --public-blue-dark: #0d47a1;
+  --error-red: #d32f2f;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #212121;
+  --white: #ffffff;
+  --success-green: #388e3c;
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--light-gray);
+}
+
+.login-form-section {
+  flex: 1;
+  max-width: 500px;
+  padding: 3rem 2rem;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-image-section {
+  flex: 1;
+  position: relative;
+  background-color: var(--police-blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.login-image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.image-overlay {
+  position: absolute;
+  text-align: center;
+  color: var(--white);
+  padding: 2rem;
+  z-index: 2;
+  max-width: 25%;
+  margin-bottom: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.building-icon {
+  display: none;
+}
+
+.image-overlay h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--police-gold);
+}
+
+.image-overlay p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.building-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--police-gold);
+}
+
+/* Header Styles */
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h1 {
+  font-size: 1.8rem;
+  color: var(--police-blue);
+  margin: 0.5rem 0 0.2rem;
+}
+
+.form-header p {
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+}
+
+.header-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.header-icon {
+  font-size: 2.5rem;
+  color: var(--police-blue);
+  padding: 15px;
+  background: rgba(26, 35, 126, 0.1);
+  border-radius: 50%;
+}
+
+/* Login Toggle */
+.login-toggle {
+  display: flex;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--medium-gray);
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 12px;
+  background: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.toggle-btn.active {
+  background: var(--police-blue);
+  color: var(--white);
+}
+
+.toggle-btn:first-child.active {
+  background: var(--public-blue);
+}
+
+.toggle-icon {
+  font-size: 1rem;
+}
+
+/* Form Styles */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--dark-gray);
+  gap: 8px;
+}
+
+.label-icon {
+  font-size: 0.9rem;
+  color: var(--police-blue);
+}
+
+.password-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-password {
+  color: var(--public-blue);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-gray);
+  font-size: 1rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px 12px 40px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--police-blue);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1);
+}
+
+/* Form Options */
+.form-options {
+  margin: 1.5rem 0;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+  cursor: pointer;
+}
+
+.remember-me input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-icon {
+  font-size: 1.1rem;
+  color: var(--medium-gray);
+  transition: all 0.2s;
+}
+
+.remember-me input:checked ~ .checkbox-icon {
+  color: var(--police-blue);
+}
+
+/* Login Button */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--police-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.login-btn:hover {
+  background-color: var(--police-blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+}
+
+/* When in client mode */
+.login-toggle .toggle-btn:first-child.active + .toggle-btn.active ~ form .login-btn {
+  background-color: var(--public-blue);
+}
+
+.login-toggle .toggle-btn:first-child.active + .toggle-btn.active ~ form .login-btn:hover {
+  background-color: var(--public-blue-dark);
+}
+
+/* Error Message */
+.error-message {
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  background-color: rgba(211, 47, 47, 0.1);
+  border-left: 3px solid var(--error-red);
+  border-radius: 0 4px 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--error-red);
+  font-size: 0.9rem;
+}
+
+.error-icon {
+  font-size: 1rem;
+}
+
+/* Emergency Notice */
+.emergency-notice {
+  margin-top: 1.5rem;
+  padding: 0.8rem;
+  background-color: rgba(211, 47, 47, 0.1);
+  border-left: 3px solid var(--error-red);
+  border-radius: 0 4px 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emergency-notice p {
+  font-size: 0.85rem;
+  color: var(--error-red);
+  margin: 0;
+}
+
+.emergency-icon {
+  color: var(--error-red);
+  font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+  
+  .login-form-section {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+    order: 2;
+  }
+  
+  .login-image-section {
+    min-height: 200px;
+    order: 1;
+  }
+  
+  .image-overlay h2 {
+    font-size: 1.5rem;
+  }
+  
+  .image-overlay p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-toggle {
+    flex-direction: column;
+  }
+  
+  .form-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.pnp-logo-overlay {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+}

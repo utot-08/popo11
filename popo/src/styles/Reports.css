@@ -1,0 +1,384 @@
+
+.reports-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  .police-evidence-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #1a237e;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .table-actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .header-title h2 {
+    margin: 0;
+    color: #1a237e;
+  }
+  .owner-blah {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .owner-header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .owner-info-card, .firearms-table-container {
+    padding: 1.5rem;
+  }
+
+  .firearms-table-container {
+    margin-top: 20px;
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-box input {
+    padding: 8px 15px 8px 35px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 14px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    color: #777;
+  }
+  
+  .export-btn, .generate-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    background-color: #1a237e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+
+  /* Button Base Styles */
+.select-all-btn,
+.generate-pdf-btn,
+.toggle-firearms-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+/* Select All Button */
+.select-all-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #d0d0d0;
+}
+
+.select-all-btn:hover {
+  background-color: #e0e0e0;
+  border-color: #c0c0c0;
+}
+
+.select-all-btn:active {
+  background-color: #d0d0d0;
+}
+
+.select-all-btn svg {
+  color: #4CAF50; /* Green checkmark */
+}
+
+/* Generate PDF Button */
+.generate-pdf-btn {
+  background-color: #2c3e50; /* Dark blue */
+  color: white;
+  border: 1px solid #1a2a3a;
+}
+
+.generate-pdf-btn:hover {
+  background-color: #34495e;
+}
+
+.generate-pdf-btn:active {
+  background-color: #1a2a3a;
+}
+
+.generate-pdf-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.generate-pdf-btn svg {
+  color: white;
+}
+
+/* Toggle Firearms Button */
+.toggle-firearms-btn {
+  background-color: transparent;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
+  margin-left: auto;
+  padding: 6px 12px;
+}
+
+.toggle-firearms-btn:hover {
+  background-color: rgba(44, 62, 80, 0.1);
+}
+
+.toggle-firearms-btn:active {
+  background-color: rgba(44, 62, 80, 0.2);
+}
+
+.toggle-firearms-btn svg {
+  transition: transform 0.2s ease;
+}
+
+/* Animation for loading spinner in PDF button */
+.generate-pdf-btn .animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .select-all-btn,
+  .generate-pdf-btn,
+  .toggle-firearms-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    gap: 6px;
+  }
+  
+  .toggle-firearms-btn span {
+    display: none;
+  }
+}
+  
+  .export-btn:hover, .generate-btn:hover {
+    background-color: #303f9f;
+  }
+  
+  .report-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  }
+  
+  .report-type-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .report-type-selector label {
+    font-weight: 500;
+  }
+  
+  .report-type-selector select {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+  }
+  
+  .generate-btn {
+    padding: 10px 20px;
+  }
+  
+  .report-results {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .report-summary {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .report-summary h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1a237e;
+  }
+  
+  .summary-details {
+    display: flex;
+    gap: 20px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .report-table-container {
+    overflow-x: auto;
+  }
+  
+  .report-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .report-table th, .report-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .report-table th {
+    background-color: #f9f9f9;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .report-table tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    width: fit-content;
+  }
+  
+  .status-badge.confiscated {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+  
+  .status-badge.surrendered {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .status-badge.deposit {
+    background-color: #e3f2fd;
+    color: #1565c0;
+  }
+  
+  .status-badge.abandoned {
+    background-color: #fff8e1;
+    color: #ff8f00;
+  }
+  
+  .owner-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .report-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+  }
+  
+  .placeholder-icon {
+    color: #bdbdbd;
+    margin-bottom: 15px;
+  }
+  
+  .report-placeholder h3 {
+    margin: 0 0 10px 0;
+    color: #424242;
+  }
+  
+  .loading-spinner, .error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 15px;
+    color: #666;
+  }
+  
+  .spinner-icon {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .error-message {
+    color: #c62828;
+  }

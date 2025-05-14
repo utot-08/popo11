@@ -1,0 +1,1033 @@
+/* Police Theme Colors */
+:root {
+  --police-blue: #1a237e;
+  --police-blue-dark: #0d1440;
+  --police-blue-light: #303f9f;
+  --badge-gold: #ffc107;
+  --police-red: #d32f2f;
+  --police-stroke: #e0e0e0;
+  --police-bg: #f8f9fa;
+  --police-card: #ffffff;
+  --police-text: #212121;
+  --police-text-light: #757575;
+  --police-success: #4caf50;
+  --police-warning: #ff9800;
+  --police-danger: #f44336;
+  --police-info: #2196f3;
+}
+
+/* Dark Mode Colors */
+.dark-mode {
+  --police-blue: #3949ab;
+  --police-blue-dark: #1a237e;
+  --police-blue-light: #5c6bc0;
+  --police-bg: #121212;
+  --police-card: #1e1e1e;
+  --police-text: #e0e0e0;
+  --police-text-light: #b0b0b0;
+  --police-stroke: #424242;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  background-color: var(--police-bg);
+  color: var(--police-text);
+  line-height: 1.6;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 260px;
+  background-color: var(--police-card);
+  border-right: 1px solid var(--police-stroke);
+  transition: all 0.3s ease;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+}
+
+.logo-section {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--police-stroke);
+}
+
+.police-badge {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  background: var(--police-blue);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.badge-icon {
+  color: var(--badge-gold);
+  font-size: 1.6rem;
+}
+
+.police-badge span {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background: var(--police-red);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.logo-section h2 {
+  font-size: 1.3rem;
+  color: var(--police-blue);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.menu-section {
+  padding: 15px 0;
+  overflow-y: auto;
+  height: calc(100vh - 80px);
+}
+
+.menu-list {
+  list-style: none;
+}
+
+.menu-list li {
+  padding: 12px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  color: var(--police-text-light);
+}
+
+.menu-list li:hover {
+  background-color: rgba(26, 35, 126, 0.08);
+  color: var(--police-text);
+}
+
+.menu-list li.active {
+  background-color: rgba(26, 35, 126, 0.15);
+  border-left: 4px solid var(--police-blue);
+  font-weight: 500;
+  color: var(--police-blue);
+}
+
+.menu-list li.active .menu-icon {
+  color: var(--police-blue);
+}
+
+.menu-icon {
+  font-size: 1.1rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+.menu-text {
+  flex-grow: 1;
+}
+
+.menu-category {
+  color: var(--police-text-light);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  padding: 8px 20px !important;
+  cursor: default !important;
+  font-weight: 600;
+}
+
+.menu-category:hover {
+  background-color: transparent !important;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+  background-color: var(--police-card);
+  border-bottom: 1px solid var(--police-stroke);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.header-left h1 {
+  font-size: 1.4rem;
+  color: var(--police-blue);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--police-text-light);
+}
+
+.breadcrumb span:last-child {
+  color: var(--police-text);
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 8px 15px 8px 35px;
+  border-radius: 20px;
+  border: 1px solid var(--police-stroke);
+  background-color: var(--police-bg);
+  color: var(--police-text);
+  font-size: 0.9rem;
+  width: 200px;
+  transition: all 0.3s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--police-blue);
+  width: 250px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--police-text-light);
+  font-size: 0.9rem;
+}
+
+.notification-btn {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--police-text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.notification-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--police-blue);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--police-danger);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--police-text);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.mode-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--police-blue);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.user-profile:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--police-blue);
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.user-rank {
+  font-size: 0.8rem;
+  color: var(--police-text-light);
+}
+
+.dropdown-icon {
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--police-card);
+  border: 1px solid var(--police-stroke);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(26, 35, 126, 0.1);
+  color: var(--police-blue);
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  padding: 30px;
+  flex: 1;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background-color: var(--police-card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background-color: rgba(26, 35, 126, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--police-blue);
+  font-size: 1.2rem;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stat-header h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--police-text-light);
+}
+
+.stat-trend {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.stat-trend.up {
+  color: var(--police-success);
+}
+
+.stat-trend.down {
+  color: var(--police-danger);
+}
+
+.stat-value {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--police-blue);
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.stat-footer {
+  font-size: 0.85rem;
+  color: var(--police-text-light);
+}
+
+/* Charts Row */
+.charts-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.chart-card {
+  background-color: var(--police-card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.time-range {
+  display: flex;
+  gap: 8px;
+  background-color: rgba(26, 35, 126, 0.1);
+  border-radius: 20px;
+  padding: 6px;
+}
+
+.time-range span {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--police-text-light);
+}
+
+.time-range span.active {
+  background-color: var(--police-blue);
+  color: white;
+}
+
+.chart-placeholder {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  height: 200px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--police-stroke);
+}
+
+.chart-bar {
+  flex: 1;
+  background-color: var(--police-blue);
+  border-radius: 5px 5px 0 0;
+  min-height: 1px;
+  transition: height 0.5s ease;
+  position: relative;
+}
+
+.chart-bar:hover {
+  opacity: 0.8;
+}
+
+.chart-bar::after {
+  content: attr(data-value);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--police-text);
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.chart-bar:hover::after {
+  opacity: 1;
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.chart-labels span {
+  font-size: 0.85rem;
+  color: var(--police-text-light);
+  flex: 1;
+  text-align: center;
+}
+
+/* Pie Chart */
+.pie-chart-placeholder {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.pie-chart {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--police-success) 0% 25%,
+    var(--police-warning) 25% 50%,
+    var(--police-danger) 50% 75%,
+    var(--police-info) 75% 100%
+  );
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.pie-center {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background-color: var(--police-card);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pie-legend div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.legend-color.theft {
+  background-color: var(--police-success);
+}
+
+.legend-color.assault {
+  background-color: var(--police-warning);
+}
+
+.legend-color.burglary {
+  background-color: var(--police-danger);
+}
+
+.legend-color.traffic {
+  background-color: var(--police-info);
+}
+
+/* Recent Activity */
+.recent-activity {
+  background-color: var(--police-card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.activity-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.view-all-btn {
+  background: none;
+  border: none;
+  color: var(--police-blue);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.view-all-btn:hover {
+  background-color: rgba(26, 35, 126, 0.1);
+}
+
+.recent-activity table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recent-activity th {
+  text-align: left;
+  padding: 12px;
+  font-size: 0.85rem;
+  color: var(--police-text-light);
+  border-bottom: 1px solid var(--police-stroke);
+  font-weight: 500;
+}
+
+.recent-activity td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--police-stroke);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.recent-activity tr:last-child td {
+  border-bottom: none;
+}
+
+.time-cell {
+  font-family: 'Roboto Mono', monospace;
+  color: var(--police-text-light);
+}
+
+.incident-type {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.incident-type.disturbance {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--police-warning);
+}
+
+.incident-type.burglary {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--police-danger);
+}
+
+.incident-type.traffic {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: var(--police-info);
+}
+
+.incident-type.suspicious {
+  background-color: rgba(156, 39, 176, 0.1);
+  color: #9c27b0;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status.active {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--police-danger);
+}
+
+.status.pending {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: var(--police-warning);
+}
+
+.status.resolved {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--police-success);
+}
+
+.action-btn {
+  background-color: rgba(26, 35, 126, 0.1);
+  color: var(--police-blue);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background-color: rgba(26, 35, 126, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 80px;
+  }
+  
+  .logo-section h2, 
+  .menu-text,
+  .menu-category {
+    display: none;
+  }
+  
+  .menu-list li {
+    justify-content: center;
+    padding: 15px 0;
+  }
+  
+  .header-left h1 {
+    font-size: 1.4rem;
+  }
+  
+  .search-bar input {
+    width: 150px;
+  }
+  
+  .search-bar input:focus {
+    width: 180px;
+  }
+  
+  .user-info {
+    display: none;
+  }
+  
+  .dropdown-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .header {
+    /* flex-direction: column; */
+    align-items: flex-center;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .header-right {
+    /* width: 100%; */
+    display: flex;
+    gap: 10px;
+    /* justify-content: space-between; */
+  }
+  
+  .search-bar {
+    flex: 1;
+  }
+  
+  .search-bar input {
+    width: 100%;
+  }
+  
+  .search-bar input:focus {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-content {
+    padding: 15px;
+  }
+  
+  .pie-chart-placeholder {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .pie-legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.notification-popup-center {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--police-card);
+  border-left: 4px solid var(--police-success);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+  animation: slideDown 0.3s ease-out;
+  max-width: 350px;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-icon {
+  color: var(--police-success);
+  min-width: 24px;
+}
+
+/* Role Indicator Styles */
+.dropdown-divider {
+  height: 1px;
+  background-color: var(--police-stroke);
+  margin: 8px 0;
+}
+
+.dropdown-role {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--police-text-light);
+}
+
+.role-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.role-icon.admin {
+  color: var(--police-danger);
+}
+
+.role-icon.police {
+  color: var(--police-blue);
+}
+
+.role-icon.client {
+  color: var(--police-success);
+}
+
+.user-rank {
+  font-size: 0.8rem;
+  color: var(--police-text-light);
+  text-transform: capitalize;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* Logo Section Styles */
+.logo-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pnp-logo-container {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.pnp-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-section h2 {
+  font-size: 18px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* Dark mode adjustments */
+.dark-mode .logo-section {
+  border-color: var(--border-color-dark);
+}
+/* No Scrollbar - hides scrollbar while keeping functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Custom Scrollbar - styled scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+}
+
+/* Dark mode styles */
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #344054;
+}
+
+
+  .user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc; /* or any color you prefer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+.dropdown-user-info {
+  padding: 12px 16px;
+  cursor: default;
+}
+
+.user-fullname {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 4px 0;
+}
+

@@ -1,0 +1,426 @@
+/* Messages Component Styles */
+.messages-container {
+    display: flex;
+    height: calc(100vh - 80px);
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .clients-list {
+    width: 350px;
+    border-right: 1px solid var(--border-color);
+    background-color: var(--bg-tertiary);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .clients-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .clients-header h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: var(--text-primary);
+  }
+  
+  .search-box {
+    position: relative;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+  }
+  
+  .clients-scrollable {
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .client-item {
+    display: flex;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+  }
+  
+  .client-item:hover {
+    background-color: var(--bg-hover);
+  }
+  
+  .client-item.active {
+    background-color: var(--primary-light);
+  }
+  
+  .client-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  
+  .client-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .client-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .client-last-message {
+    font-size: 13px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .client-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 10px;
+  }
+  
+  .client-time {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-bottom: 5px;
+  }
+  
+  .unread-badge {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  
+  .message-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .client-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .client-details .client-avatar {
+    margin-right: 15px;
+  }
+  
+  .client-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  
+  .client-email {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  
+  .message-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .action-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  
+  .dropdown-container {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    z-index: 10;
+    border: 1px solid var(--border-color);
+  }
+  
+  .dropdown-item {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text-primary);
+  }
+  
+  .dropdown-item:hover {
+    background-color: var(--bg-hover);
+  }
+  
+  .dropdown-item svg {
+    color: var(--text-secondary);
+  }
+  
+  .messages-scrollable {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: var(--bg-secondary);
+    background-image: 
+      linear-gradient(var(--bg-tertiary) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-tertiary) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .message {
+    max-width: 70%;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    position: relative;
+  }
+  
+  .message.sent {
+    background-color: var(--primary-light);
+    color: var(--text-primary);
+    margin-left: auto;
+    border-bottom-right-radius: 0;
+  }
+  
+  .message.received {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    margin-right: auto;
+    border-bottom-left-radius: 0;
+  }
+  
+  .message-content {
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+  
+  .message-meta {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+  
+  .message-status {
+    display: flex;
+  }
+  
+  .message-status svg.read {
+    color: var(--primary-color);
+  }
+  
+  .message-composer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-tertiary);
+  }
+  
+  .attachments-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--bg-secondary);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+  
+  .attachment-item button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+  }
+  
+  .attachment-item button:hover {
+    color: var(--error-color);
+  }
+  
+  .composer-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .composer-toolbar input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+  
+  .attachment-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: background-color 0.2s;
+  }
+  
+  .attachment-btn:hover {
+    background-color: var(--bg-hover);
+  }
+  
+  .send-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    transition: background-color 0.2s;
+  }
+  
+  .send-btn:disabled {
+    background-color: var(--bg-hover);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+  }
+  
+  .send-btn:not(:disabled):hover {
+    background-color: var(--primary-dark);
+  }
+  
+  .no-client-selected {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+  }
+  
+  .no-client-selected h3 {
+    margin: 20px 0 10px;
+    color: var(--text-primary);
+  }
+  
+  .mail-icon {
+    color: var(--text-tertiary);
+  }
+  
+  /* Dark mode adjustments */
+  .dark-mode .messages-container {
+    background-color: var(--bg-secondary-dark);
+  }
+  
+  .dark-mode .clients-list {
+    background-color: var(--bg-tertiary-dark);
+    border-color: var(--border-color-dark);
+  }
+  
+  .dark-mode .client-item.active {
+    background-color: var(--primary-dark);
+  }
+  
+  .dark-mode .message.sent {
+    background-color: var(--primary-dark);
+  }
+  
+  .dark-mode .message.received {
+    background-color: var(--bg-tertiary-dark);
+  }
+  
+  .dark-mode .messages-scrollable {
+    background-color: var(--bg-secondary-dark);
+    background-image: 
+      linear-gradient(var(--bg-tertiary-dark) 1px, transparent 1px),
+      linear-gradient(90deg, var(--bg-tertiary-dark) 1px, transparent 1px);
+  }
+  
+  .dark-mode .message-composer {
+    background-color: var(--bg-tertiary-dark);
+    border-color: var(--border-color-dark);
+  }
+  
+  .dark-mode .attachment-item {
+    background-color: var(--bg-secondary-dark);
+  }

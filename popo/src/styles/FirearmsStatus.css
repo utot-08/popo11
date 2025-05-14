@@ -1,0 +1,401 @@
+/* FirearmsStatus.css */
+
+.firearms-status-container {
+  padding: 1.5rem;
+  background-color: var(--background-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.firearms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-title h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.header-title p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.header-icon {
+  color: var(--primary-color);
+  background-color: var(--primary-light);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  background-color: var(--hover-color);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.refresh-icon.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.firearms-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  position: relative;
+  flex-grow: 1;
+  min-width: 250px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.filter-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.status-filter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-icon {
+  color: var(--text-secondary);
+}
+
+.filter-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  min-width: 120px;
+  justify-content: space-between;
+}
+
+.dropdown-icon {
+  transition: transform 0.2s;
+}
+
+.dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+.status-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 180px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: var(--hover-color);
+}
+
+.firearms-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+}
+
+.firearms-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.firearms-table th {
+  background-color: var(--table-header-bg);
+  color: var(--text-color);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.firearms-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.firearms-table tr:last-child td {
+  border-bottom: none;
+}
+
+.firearms-table tr:hover {
+  background-color: var(--hover-color);
+}
+
+.table-header-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.firearm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.serial-number {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.model-type {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.registration-status {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  width: fit-content;
+  margin-top: 0.25rem;
+}
+
+.registration-status.registered {
+  background-color: var(--success-light);
+  color: var(--success-dark);
+}
+
+.registration-status.unregistered {
+  background-color: var(--warning-light);
+  color: var(--warning-dark);
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+  width: fit-content;
+  font-size: 0.8rem;
+  background-color: var(--status-bg);
+}
+
+.status-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.status-icon.confiscated {
+  color: var(--danger-color);
+}
+
+.status-icon.surrendered {
+  color: var(--success-color);
+}
+
+.status-icon.deposit {
+  color: var(--info-color);
+}
+
+.status-icon.abandon {
+  color: var(--warning-color);
+}
+
+.status-select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+
+.edit-btn, .save-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-btn {
+  background-color: var(--edit-btn-bg);
+  color: var(--edit-btn-color);
+  border: 1px solid var(--edit-btn-border);
+}
+
+.edit-btn:hover {
+  background-color: var(--edit-btn-hover);
+}
+
+.save-btn {
+  background-color: var(--save-btn-bg);
+  color: var(--save-btn-color);
+  border: 1px solid var(--save-btn-border);
+}
+
+.save-btn:hover {
+  background-color: var(--save-btn-hover);
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.no-results-icon {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.no-results h3 {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.no-results p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  gap: 1rem;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  color: var(--primary-color);
+}
+
+.loading-spinner p {
+  color: var(--text-secondary);
+}
+
+/* Dark mode specific styles */
+.dark-mode .firearms-table th {
+  background-color: var(--dark-table-header-bg);
+}
+
+.dark-mode .edit-btn {
+  background-color: var(--dark-edit-btn-bg);
+  color: var(--dark-edit-btn-color);
+  border-color: var(--dark-edit-btn-border);
+}
+
+.dark-mode .edit-btn:hover {
+  background-color: var(--dark-edit-btn-hover);
+}
+
+.dark-mode .save-btn {
+  background-color: var(--dark-save-btn-bg);
+  color: var(--dark-save-btn-color);
+  border-color: var(--dark-save-btn-border);
+}
+
+.dark-mode .save-btn:hover {
+  background-color: var(--dark-save-btn-hover);
+}

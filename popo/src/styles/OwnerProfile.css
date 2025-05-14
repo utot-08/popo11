@@ -1,0 +1,515 @@
+/* Enhanced Owner Profile Styles */
+.firearms-container {
+  padding: 20px;
+  background-color: #f5f7fa;
+  min-height: calc(100vh - 80px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.police-evidence-banner {
+  background: linear-gradient(135deg, #004aad 0%, #002d66 100%);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+.firearms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e1e5eb;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-title h2 {
+  color: #2c3e50;
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.owners-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 20px;
+  background: #e1e5eb;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.header-icon {
+  color: #004aad;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  padding: 10px 15px 10px 40px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  width: 300px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background-color: #fff;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #004aad;
+  box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #6b7280;
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #004aad 0%, #003a8a 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.export-btn:hover {
+  background: linear-gradient(135deg, #003a8a 0%, #002d66 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.owner-profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.owner-info-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  border: 1px solid #e1e5eb;
+}
+
+.owner-info-card.expanded {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e0;
+}
+
+.owner-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: #f8fafc;
+}
+
+.owner-info-header:hover {
+  background-color: #f1f5f9;
+}
+
+.owner-info-header.clickable {
+  cursor: pointer;
+}
+
+.owner-main-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.owner-icon {
+  color: #004aad;
+  background-color: #e1e9f7;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.owner-name-id {
+  flex: 1;
+}
+
+.owner-info-header h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.owner-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.owner-id, .owner-reg-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.owner-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 20px;
+}
+
+.license-status {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.license-status.active {
+  color: #2e7d32;
+}
+
+.license-status.suspended {
+  color: #ff9800;
+}
+
+.license-status.revoked {
+  color: #f44336;
+}
+
+.license-status.pending {
+  color: #2196f3;
+}
+
+.license-status.expired {
+  color: #9e9e9e;
+}
+
+.expand-icon {
+  transition: transform 0.3s;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.owner-details-content {
+  padding: 20px;
+  border-top: 1px solid #e1e5eb;
+  background-color: #fff;
+}
+
+.owner-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: all 0.3s;
+  border: 1px solid #e1e5eb;
+}
+
+.detail-item:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.detail-icon {
+  color: #004aad;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.detail-label {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  display: block;
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.owner-firearms-section {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #e1e5eb;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.firearms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.firearm-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  border: 1px solid #e1e5eb;
+  transition: all 0.3s;
+}
+
+.firearm-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.firearm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.firearm-type-model {
+  flex: 1;
+}
+
+.firearm-type {
+  font-weight: bold;
+  color: #004aad;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.firearm-model {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 4px;
+  color: #2c3e50;
+}
+
+.firearm-details {
+  margin-top: 10px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.detail-row span:first-child {
+  color: #6b7280;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detail-row span:last-child {
+  color: #2c3e50;
+  font-weight: 500;
+  text-align: right;
+}
+
+.no-firearms, .no-results {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px dashed #d1d5db;
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.clear-search-btn {
+  padding: 8px 16px;
+  background-color: #e1e5eb;
+  border: none;
+  border-radius: 6px;
+  color: #4a5568;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.clear-search-btn:hover {
+  background-color: #d1d5db;
+}
+
+/* Status badges */
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.confiscated {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.active {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.status-badge.surrendered {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.status-badge.deposit {
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+
+.status-badge.abandoned {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+/* Loading and error states */
+.loading-container, .error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 300px;
+  text-align: center;
+}
+
+.error-container {
+  color: #dc2626;
+}
+
+.retry-btn {
+  padding: 8px 16px;
+  background-color: #fee2e2;
+  border: none;
+  border-radius: 6px;
+  color: #dc2626;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.retry-btn:hover {
+  background-color: #fecaca;
+}
+
+/* Icons specific styles */
+.icon-active {
+  color: #16a34a;
+}
+
+.icon-suspended {
+  color: #d97706;
+}
+
+.icon-revoked {
+  color: #dc2626;
+}
+
+.icon-pending {
+  color: #2563eb;
+}
+
+.icon-expired {
+  color: #6b7280;
+}
+
+/* Animation for expandable sections */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.owner-details-content {
+  animation: fadeIn 0.3s ease-out;
+}

@@ -9,7 +9,7 @@ import '../styles/Messages.css';
 const Messages = () => {
   // Sample data - in a real app, you would fetch this from an API
   const [clients, setClients] = useState([
-    { id: 1, name: 'Django James', email: 'djangoJames@example.com', unread: 2, lastMessage: 'About the firearm fucking registration...', time: '10:30 AM' },
+    { id: 1, name: 'Django James', email: 'djangoJames@example.com', unread: 2, lastMessage: 'About the firearm registration...', time: '10:30 AM' },
     { id: 2, name: 'Sarah Johnson', email: 'sarah.j@example.com', unread: 0, lastMessage: 'I have submitted the documents', time: 'Yesterday' },
     { id: 3, name: 'Michael Brown', email: 'michael.b@example.com', unread: 5, lastMessage: 'Need help with license renewal', time: '2 days ago' },
     { id: 4, name: 'Emily Davis', email: 'emily.d@example.com', unread: 0, lastMessage: 'Thank you for your assistance!', time: '1 week ago' },
@@ -37,7 +37,7 @@ const Messages = () => {
         {
           id: 1,
           sender: 'You',
-          content: 'Hello, how can I fucking assist you with your firearm registration?',
+          content: 'Hello, how can I assist you with your firearm registration?',
           time: '10:30 AM',
           status: 'read',
           isYou: true
@@ -45,7 +45,7 @@ const Messages = () => {
         {
           id: 2,
           sender: selectedClient.name,
-          content: 'I need a fucking help submitting the required documents mah nigga',
+          content: 'I need a help submitting the required documents.',
           time: '10:32 AM',
           status: 'read',
           isYou: false
@@ -53,7 +53,7 @@ const Messages = () => {
         {
           id: 3,
           sender: 'You',
-          content: 'Please send me the fucking scanned copies of your ID and proof of residence',
+          content: 'Please send me the scanned copies of your ID and proof of residence',
           time: '10:35 AM',
           status: 'delivered',
           isYou: true

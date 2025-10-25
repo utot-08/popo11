@@ -1,0 +1,502 @@
+/* Main Container */
+.flr-container {
+  /* max-width: 1200px; */
+  width: 1400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Header Styles */
+.flr-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.flr-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #f0f7ff;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+  color: #1a73e8;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.1);
+}
+
+.flr-title {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.flr-description {
+  color: #667;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Form Sections */
+.flr-form-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.flr-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.flr-section-header h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin: 0;
+}
+
+.flr-section-icon {
+  color: #1a73e8;
+}
+
+.flr-required-badge {
+  margin-left: auto;
+  color: #1a73e8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  pointer-events: none;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Form Grid Layout */
+.flr-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Form Group Styles */
+.flr-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.flr-input-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.flr-input-icon {
+  color: #5f6368;
+}
+
+.flr-input {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.flr-input:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+.flr-input-error {
+  border-color: #d93025;
+  background-color: #fff9f9;
+}
+
+.flr-input-error:focus {
+  box-shadow: 0 0 0 3px rgba(217, 48, 37, 0.15);
+}
+
+.flr-required-star {
+  color: #d93025;
+  margin-left: 0.25rem;
+}
+
+/* Search Styles */
+.flr-search-container {
+  position: relative;
+}
+
+.flr-search-input {
+  padding-left: 2.75rem;
+  font-size: 1rem;
+}
+
+.flr-search-loading {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5f6368;
+}
+
+/* Search Results */
+.flr-search-results {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.flr-result-item {
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.flr-result-item:last-child {
+  border-bottom: none;
+}
+
+.flr-result-item:hover {
+  background-color: #f5f5f5;
+}
+
+.flr-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.flr-user-details {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.875rem;
+  color: #666;
+  padding-left: 1.75rem;
+}
+
+/* Selected Owner */
+.flr-selected-owner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background-color: #f0f7ff;
+  border-radius: 8px;
+  margin-top: 1.25rem;
+  position: relative;
+  border: 1px solid #d6e7ff;
+}
+
+.flr-owner-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #1a73e8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.flr-owner-details h4 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.flr-owner-details p {
+  margin: 0.35rem 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.flr-clear-btn {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0.35rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.flr-clear-btn:hover {
+  color: #d93025;
+  background-color: rgba(217, 48, 37, 0.1);
+}
+
+/* Error Message */
+.flr-error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #d93025;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+/* Submit Button */
+.flr-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.flr-submit-btn:hover {
+  background-color: #1765cc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+.flr-submit-btn:active {
+  transform: translateY(0);
+}
+
+.flr-submit-btn:disabled {
+  background-color: #b3c6e0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .flr-container {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  .flr-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .flr-form-section {
+    padding: 1.5rem;
+  }
+  
+  .flr-header-badge {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .flr-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.flr-form-section {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.flr-form-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+/* Firearm Selection Styles */
+.flr-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.flr-firearm-selection {
+  margin-top: 1rem;
+}
+
+.flr-firearm-description {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.flr-firearm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.flr-firearm-card {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.flr-firearm-card:hover {
+  border-color: #1a73e8;
+  background: #f0f7ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+}
+
+.flr-firearm-card-selected {
+  border-color: #1a73e8;
+  background: #e3f2fd;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+.flr-firearm-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.flr-firearm-serial {
+  font-weight: 600;
+  color: #1a73e8;
+  font-size: 1.1rem;
+}
+
+.flr-firearm-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.flr-firearm-detail {
+  font-size: 0.9rem;
+  color: #495057;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flr-firearm-detail strong {
+  color: #343a40;
+  font-weight: 500;
+}
+
+.flr-selected-firearm-info {
+  background: #e8f5e8;
+  border: 1px solid #c3e6c3;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flr-selected-firearm-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.flr-check-icon {
+  color: #4caf50;
+}
+
+.flr-clear-firearm-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background-color 0.2s ease;
+}
+
+.flr-clear-firearm-btn:hover {
+  background: #c82333;
+}
+
+.flr-no-firearms {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.flr-no-firearms svg {
+  color: #ffc107;
+  margin-bottom: 1rem;
+}
+
+.flr-no-firearms p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.flr-no-firearms-subtitle {
+  font-size: 0.9rem !important;
+  color: #999 !important;
+}
+
+/* Responsive adjustments for firearm selection */
+@media (max-width: 768px) {
+  .flr-firearm-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .flr-selected-firearm-info {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+

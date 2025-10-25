@@ -1,345 +1,513 @@
-/* Firearms Section Styles */
+/* YourFirearms - Table Format Design */
+
 .firearms-content {
-    padding: 20px;
-  }
-  
-  .firearms-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .firearms-header h2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-primary);
-  }
-  
-  .firearms-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  
-  .firearm-card {
-    background: var(--card-bg);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    border-left: 4px solid var(--primary-color);
-  }
-  
-  .firearm-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .firearm-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  .firearm-icon {
-    background: var(--primary-light);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-  }
-  
-  .firearm-status {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  
-  .status-deposit {
-    background-color: rgba(0, 123, 255, 0.1);
-    color: #007bff;
-    border: 1px solid #007bff;
-  }
-  
-  .status-surrendered {
-    background-color: rgba(40, 167, 69, 0.1);
-    color: #28a745;
-    border: 1px solid #28a745;
-  }
-  
-  .status-confiscated {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
-    border: 1px solid #dc3545;
-  }
-  
-  .status-abandon {
-    background-color: rgba(255, 193, 7, 0.1);
-    color: #ffc107;
-    border: 1px solid #ffc107;
-  }
-  
-  .firearm-details {
-    margin-bottom: 15px;
-  }
-  
-  .firearm-details h3 {
-    margin: 0 0 10px 0;
-    color: var(--text-primary);
-  }
-  
-  .firearm-details p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-  
-  .firearm-action {
-    width: 100%;
-    padding: 8px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
-  
-  .firearm-action:hover {
-    background: var(--primary-dark);
-  }
-  
-  .add-firearm-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 15px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
-  
-  .add-firearm-btn:hover {
-    background: var(--primary-dark);
-  }
-  
-  /* Dark mode specific styles */
-  .dark-mode .firearm-card {
-    background: var(--dark-card-bg);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .dark-mode .firearm-details h3 {
-    color: var(--dark-text-primary);
-  }
-  
-  .dark-mode .firearm-details p {
-    color: var(--dark-text-secondary);
-  }
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
-  /* Add these styles to your existing CSS file */
-
-.loading, .error, .no-firearms {
+/* Header */
+.firearms-header {
+  margin-bottom: 32px;
   text-align: center;
-  padding: 2rem;
-  font-size: 1.2rem;
 }
 
-.error {
-  color: #ff4444;
-}
-
-/* Modal styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+.firearms-header h2 {
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background-color: white;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.modal-header {
-  padding: 1rem;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-header h3 {
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
   margin: 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
 }
 
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #666;
+.firearms-header svg {
+  color: #3b82f6;
 }
 
-.modal-body {
-  padding: 1rem;
-}
-
-.modal-detail {
+/* Loading and Error States */
+.loading, .error {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f5f5f5;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #64748b;
 }
 
-.modal-footer {
-  padding: 1rem;
+.loading svg {
+  color: #3b82f6;
+}
+
+.error svg {
+  color: #ef4444;
+}
+
+/* No Firearms State */
+.no-firearms {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  border: 2px dashed #e2e8f0;
+  text-align: center;
 }
 
-.modal-close-btn {
-  padding: 0.5rem 1rem;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.no-firearms svg {
+  color: #cbd5e1;
 }
 
-.modal-close-btn:hover {
-  background-color: #555;
+.no-firearms span {
+  font-size: 18px;
+  color: #64748b;
+  font-weight: 500;
 }
 
+/* Table Container */
+.firearms-table-container {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  overflow-x: auto;
+}
 
-/* Custom Alert Styles */
-.custom-alert {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  max-width: 320px;
-  padding: 15px 25px;
-  background: #27ae60; /* vibrant green */
-  color: white;
+/* Table */
+.firearms-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: white;
+}
+
+.firearms-table * {
+  box-sizing: border-box;
+}
+
+/* Table Header */
+.firearms-table thead {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.firearms-table th {
+  padding: 16px 12px;
+  text-align: left;
   font-weight: 600;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.5);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  z-index: 1200;
+  color: #ffffff !important;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
 }
 
-.custom-alert.show {
-  opacity: 1;
-  pointer-events: auto;
+.firearms-table th:last-child {
+  border-right: none;
+}
+
+/* Ensure header text is visible */
+.firearms-table thead th {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Body */
+.firearms-table tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.firearms-table tbody tr:hover {
+  background: #f8fafc;
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.firearms-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Table Cells */
+.firearms-table td {
+  padding: 16px 12px;
+  vertical-align: middle;
+  border-right: 1px solid #f1f5f9;
+}
+
+.firearms-table td:last-child {
+  border-right: none;
+}
+
+/* Cell Content Styling */
+.firearm-type-cell .firearm-type {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 15px;
+}
+
+.firearm-model-cell .firearm-model {
+  font-weight: 500;
+  color: #475569;
+  font-size: 14px;
+}
+
+.firearm-serial-cell .firearm-serial {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 14px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.firearm-subtype-cell .firearm-subtype {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.firearm-caliber-cell .firearm-caliber {
+  font-weight: 500;
+  color: #475569;
+  font-size: 14px;
+}
+
+.firearm-date-cell .firearm-date {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Status Styling */
+.firearm-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.firearm-status.status-captured {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.firearm-status.status-confiscated {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.firearm-status.status-surrendered {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.firearm-status.status-deposited {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.firearm-status.status-abandoned {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.firearm-status.status-forfeited {
+  background: #fce7f3;
+  color: #be185d;
+}
+
+/* Action Button */
+.firearm-action-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.firearm-action-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.firearm-action-btn:active {
   transform: translateY(0);
 }
 
-.custom-alert::before {
-  content: '✓';
-  margin-right: 12px;
-  font-weight: 900;
-  font-size: 18px;
-}
-
+/* Modal Styles */
 .firearm-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure modal is on top */
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
 }
 
 .firearm-modal-content {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  width: 400px; /* Set a fixed width for the modal */
-  max-width: 90%; /* Responsive width */
-  padding: 20px;
-  position: relative;
+  background: white;
+  border-radius: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .firearm-modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
 }
 
-.firearm-modal-header h3 {
+.modal-title-group h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+}
+
+.modal-subtitle {
+  font-size: 14px;
+  color: #64748b;
   margin: 0;
-  font-size: 1.5em;
 }
 
 .firearm-modal-close {
-  background: none;
-  border: none;
-  font-size: 1.5em;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #64748b;
   cursor: pointer;
-  color: #333; /* Close button color */
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.firearm-modal-close:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
 }
 
 .firearm-modal-body {
-  margin-top: 15px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.modal-section {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 .firearm-modal-detail {
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.firearm-modal-detail:last-child {
+  border-bottom: none;
 }
 
 .firearm-modal-detail strong {
-  display: inline-block;
-  width: 120px; /* Fixed width for labels */
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
 }
 
-.firearm-modal-detail span {
-  color: #555; /* Text color */
+.firearm-modal-detail-value {
+  font-size: 14px;
+  color: #1e293b;
+  font-weight: 500;
 }
 
-/* Optional: Add styles for status colors */
-.status-active {
-  color: green;
+.firearm-modal-detail-value.highlight {
+  font-weight: 700;
+  background: #dbeafe;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
 }
 
-.status-inactive {
-  color: red;
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.status-pending {
-  color: orange;
+.status-notes {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+  min-height: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .firearms-table th,
+  .firearms-table td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+  
+  .firearm-serial-cell .firearm-serial {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .firearms-content {
+    padding: 16px;
+  }
+  
+  .firearms-header h2 {
+    font-size: 24px;
+    padding: 20px;
+  }
+  
+  .firearms-table-container {
+    overflow-x: auto;
+  }
+  
+  .firearms-table {
+    min-width: 800px;
+  }
+  
+  .firearms-table th,
+  .firearms-table td {
+    padding: 10px 6px;
+    font-size: 12px;
+  }
+  
+  .firearm-action-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .firearm-modal-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .firearm-modal-header {
+    padding: 20px;
+  }
+  
+  .firearm-modal-body {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .firearms-content {
+    padding: 12px;
+  }
+  
+  .firearms-header h2 {
+    font-size: 20px;
+    padding: 16px;
+  }
+  
+  .firearms-table th,
+  .firearms-table td {
+    padding: 8px 4px;
+    font-size: 11px;
+  }
+  
+  .firearm-serial-cell .firearm-serial {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  .firearm-action-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  
+  .firearm-modal-content {
+    margin: 10px;
+  }
+  
+  .firearm-modal-header {
+    padding: 16px;
+  }
+  
+  .firearm-modal-body {
+    padding: 16px;
+  }
 }

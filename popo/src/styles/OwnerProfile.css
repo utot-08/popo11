@@ -7,7 +7,7 @@
 }
 
 .police-evidence-banner {
-  background: linear-gradient(135deg, #004aad 0%, #002d66 100%);
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -23,48 +23,231 @@
   font-size: 0.95rem;
 }
 
-.firearms-header {
+/* Owner Profile Header */
+.op-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #e1e5eb;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.5s ease-out;
 }
 
-.header-title {
+.op-header-title {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
-.header-title h2 {
-  color: #2c3e50;
-  font-size: 24px;
+.op-header-title h2 {
   margin: 0;
+  font-size: 1.5rem;
   font-weight: 600;
+  color: #1e293b;
 }
 
-.owners-count {
+.op-owners-badge {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-left: 20px;
-  background: #e1e5eb;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  color: #4a5568;
+  gap: 0.5rem;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.375rem 0.875rem;
+  border-radius: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 1rem;
 }
 
-.header-icon {
-  color: #004aad;
+.op-header-icon {
+  color: #3b82f6;
+  animation: pulse 2s infinite;
 }
 
-.header-actions {
+.op-header-actions {
   display: flex;
-  gap: 15px;
+  gap: 0.75rem;
+}
+
+.op-export-btn {
+  display: flex;
   align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.op-export-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Owner Profile Controls Section */
+.op-controls-section {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.op-search-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.op-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.op-search-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.op-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.op-clear-search {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.op-clear-search:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.op-filters-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.op-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.op-filter-group:hover {
+  border-color: #cbd5e1;
+  background: #f1f5f9;
+}
+
+.op-filter-icon {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.op-filter-select {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  background: transparent;
+  color: #334155;
+  cursor: pointer;
+}
+
+.op-date-range-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  grid-column: span 2;
+}
+
+.op-date-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.op-date-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.op-date-input {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  background: white;
+  transition: all 0.2s;
+  min-width: 130px;
+}
+
+.op-date-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.op-clear-dates-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.625rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  color: #64748b;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.op-clear-dates-btn:hover {
+  background: #e2e8f0;
+  color: #334155;
 }
 
 .search-box {
@@ -95,6 +278,154 @@
   color: #6b7280;
 }
 
+/* Clear search button */
+.clear-search {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-search:hover {
+  background-color: #f1f5f9;
+  color: #374151;
+}
+
+/* Filter section */
+.filter-section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e1e5eb;
+}
+
+.filter-group select {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+/* Date Range Filter Styles */
+.date-range-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e1e5eb;
+  min-width: 400px;
+}
+
+.date-range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.date-input-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.date-label {
+  font-size: 13px;
+  color: #4a5568;
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 35px;
+}
+
+.date-input {
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  background: white;
+  transition: all 0.3s;
+  min-width: 120px;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #004aad;
+  box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.1);
+}
+
+.clear-date-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  color: #6c757d;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.clear-date-btn:hover {
+  background: #e9ecef;
+  color: #495057;
+  border-color: #adb5bd;
+}
+
+/* Responsive adjustments for date range filters */
+@media (max-width: 1200px) {
+  .date-range-filter-group {
+    min-width: 350px;
+  }
+  
+  .date-input {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .date-range-filter-group {
+    min-width: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .date-range-inputs {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .date-input-group {
+    justify-content: space-between;
+  }
+  
+  .date-input {
+    min-width: 100px;
+    flex: 1;
+  }
+}
+
 .export-btn {
   display: flex;
   align-items: center;
@@ -115,6 +446,117 @@
   background: linear-gradient(135deg, #003a8a 0%, #002d66 100%);
   transform: translateY(-1px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Summary cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e1e5eb;
+  transition: all 0.3s;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-icon {
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-icon.active {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.summary-icon.pending {
+  background-color: #e6f3ff;
+  color: #007bff;
+}
+
+.summary-icon.expired {
+  background-color: #fff3e6;
+  color: #fd7e14;
+}
+
+.summary-icon.firearm {
+  background-color: #e1e9f7;
+  color: #004aad;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Sort controls */
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e1e5eb;
+}
+
+.sort-controls span {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.sort-controls button {
+  padding: 6px 12px;
+  background: #f8fafc;
+  border: 1px solid #e1e5eb;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sort-controls button:hover {
+  background: #e1e5eb;
+}
+
+.sort-controls button.active {
+  background: #004aad;
+  color: white;
+  border-color: #004aad;
 }
 
 .owner-profile-content {
@@ -138,6 +580,11 @@
   border-color: #cbd5e0;
 }
 
+.owner-info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
 .owner-info-header {
   display: flex;
   align-items: center;
@@ -146,6 +593,7 @@
   cursor: pointer;
   transition: all 0.3s;
   background-color: #f8fafc;
+  flex-wrap: wrap;
 }
 
 .owner-info-header:hover {
@@ -163,11 +611,19 @@
   flex: 1;
 }
 
-.owner-icon {
-  color: #004aad;
-  background-color: #e1e9f7;
-  padding: 8px;
-  border-radius: 8px;
+/* Owner avatar */
+.owner-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #004aad 0%, #003a8a 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
 }
 
 .owner-name-id {
@@ -183,12 +639,13 @@
 
 .owner-meta {
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   font-size: 13px;
   color: #4a5568;
 }
 
-.owner-id, .owner-reg-date {
+.owner-id, .owner-reg-date, .owner-contact {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -226,6 +683,23 @@
   color: #9e9e9e;
 }
 
+.license-status.unknown {
+  color: #9e9e9e;
+}
+
+/* Firearm count badge */
+.firearm-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #4a5568;
+  margin: 0 15px;
+}
+
 .expand-icon {
   transition: transform 0.3s;
   font-size: 12px;
@@ -240,6 +714,57 @@
   padding: 20px;
   border-top: 1px solid #e1e5eb;
   background-color: #fff;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Quick actions */
+.quick-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e1e5eb;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #e1e5eb;
+  background: white;
+  color: #4a5568;
+}
+
+.action-btn:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.action-btn.primary {
+  background: #004aad;
+  color: white;
+  border-color: #004aad;
+}
+
+.action-btn.primary:hover {
+  background: #003a8a;
+}
+
+.action-btn.secondary {
+  background: #e1e9f7;
+  color: #004aad;
+  border-color: #e1e9f7;
+}
+
+.action-btn.secondary:hover {
+  background: #d3def4;
 }
 
 .owner-details-grid {
@@ -308,6 +833,32 @@
   font-size: 18px;
   color: #2c3e50;
   font-weight: 600;
+}
+
+.refresh-licenses-btn {
+  margin-left: auto;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.refresh-licenses-btn:hover:not(:disabled) {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.refresh-licenses-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .firearms-grid {
@@ -504,12 +1055,1449 @@
   color: #6b7280;
 }
 
+.icon-unknown {
+  color: #9e9e9e;
+}
+
 /* Animation for expandable sections */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.owner-details-content {
-  animation: fadeIn 0.3s ease-out;
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* color status */
+.text-captured {
+  color: #FF0000 !important;
+}
+
+.text-confiscated {
+  color: #FFA07A !important;
+}
+
+.text-surrendered {
+  color: #008000 !important;
+}
+
+.text-deposited {
+  color: #0000FF !important;
+}
+
+.text-abandoned {
+  color: #FFFF00 !important;
+}
+
+.text-forfeited {
+  color: #800080 !important;
+}
+
+/* Notification styles */
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+  margin-left: auto;
+  color: #555;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4757;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.notifications-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.notifications-list {
+  padding: 0;
+}
+
+.notification-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f5f5f5;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.notification-item.unread {
+  background-color: #f8f9fa;
+}
+
+.notification-item:hover {
+  background-color: #f1f3f5;
+}
+
+.notification-content {
+  margin-left: 8px;
+}
+
+.notification-message {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #666;
+}
+
+.no-notifications {
+  padding: 16px;
+  text-align: center;
+  color: #666;
+}
+
+/* Notification buttons in OwnerProfile */
+.notification-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.notify-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.notify-btn.license-expiry {
+  background-color: #fff3bf;
+  color: #5c4800;
+}
+
+.notify-btn.firearm-ready {
+  background-color: #d3f9d8;
+  color: #0a5c00;
+}
+
+.notify-btn:hover {
+  opacity: 0.9;
+}
+
+/* License Section Styles */
+.owner-licenses-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.licenses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.license-card {
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--primary-color);
+  transition: all 0.3s;
+}
+
+.license-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.license-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.license-number {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.license-status {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.license-status.active {
+  background-color: #e6f7e6;
+  color: #28a745;
+}
+
+.license-status.expired {
+  background-color: #fff3e6;
+  color: #fd7e14;
+}
+
+.license-status.revoked {
+  background-color: #fde8e8;
+  color: #dc3545;
+}
+
+.license-status.pending {
+  background-color: #e6f3ff;
+  color: #007bff;
+}
+
+.license-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.license-details .detail-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.license-details .detail-row span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #666;
+}
+
+.license-photo-preview {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed #ddd;
+}
+
+.view-photo-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.view-photo-btn:hover {
+  text-decoration: underline;
+}
+
+.loading-licenses {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  padding: 1rem 0;
+}
+
+.no-licenses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  color: #666;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+/* Modal Styles */
+.photo-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.photo-modal {
+  background-color: white;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.photo-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  background-color: #f8f9fa;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-modal-btn:hover {
+  color: #333;
+}
+
+.photo-modal-content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.license-photo-full {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.no-photo-message {
+  padding: 2rem;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .op-filters-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .op-date-range-group {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .op-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .op-header-actions {
+    width: 100%;
+  }
+  
+  .op-export-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .op-filters-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .op-date-range-group {
+    grid-column: span 1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .op-date-input-wrapper {
+    justify-content: space-between;
+  }
+  
+  .op-date-input {
+    flex: 1;
+  }
+  
+  .op-clear-dates-btn {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .owner-info-header {
+    flex-wrap: wrap;
+  }
+  
+  .owner-status-indicator,
+  .firearm-count {
+    margin: 8px 0;
+  }
+  
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .quick-actions {
+    flex-direction: column;
+  }
+  
+  .owner-details-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .firearms-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .licenses-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sort-controls {
+    flex-wrap: wrap;
+  }
+  
+  .sort-controls button {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+/* Focus states for accessibility */
+.search-box input:focus,
+.filter-group select:focus,
+.action-btn:focus {
+  outline: 2px solid #004aad;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .header-actions,
+  .sort-controls,
+  .quick-actions,
+  .expand-icon {
+    display: none !important;
+  }
+  
+  .owner-info-card {
+    break-inside: avoid;
+  }
+  
+  .owner-details-content {
+    display: block !important;
+  }
+}
+
+/* Additional styles for the new summary card */
+.summary-icon.total {
+  background-color: #e6e6ff;
+  color: #4a4aff;
+}
+
+/* Ensure all summary cards have consistent styling */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e1e5eb;
+  transition: all 0.3s;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-icon {
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-icon.active {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.summary-icon.pending {
+  background-color: #e6f3ff;
+  color: #007bff;
+}
+
+.summary-icon.expired {
+  background-color: #fff3e6;
+  color: #fd7e14;
+}
+
+.summary-icon.firearm {
+  background-color: #e1e9f7;
+  color: #004aad;
+}
+
+.summary-icon.total {
+  background-color: #e6e6ff;
+  color: #4a4aff;
+}
+
+.summary-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+
+/* new */
+/* Firearm View Details Button */
+.firearm-view-details-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.firearm-view-details-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* Firearm Modal Styles */
+.firearm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.firearm-modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.landscape-modal {
+  max-width: 700px;
+}
+
+.firearm-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-title-group h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.modal-subtitle {
+  margin: 5px 0 0 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.firearm-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #6c757d;
+  padding: 5px;
+  line-height: 1;
+}
+
+.firearm-modal-close:hover {
+  color: #2c3e50;
+}
+
+.landscape-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 30px;
+}
+
+.modal-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.modal-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 6px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.section-title {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.firearm-modal-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.firearm-modal-detail:last-child {
+  border-bottom: none;
+}
+
+.firearm-modal-detail strong {
+  color: #495057;
+  font-weight: 600;
+}
+
+.firearm-modal-detail-value {
+  color: #6c757d;
+  text-align: right;
+  max-width: 200px;
+  word-break: break-word;
+}
+
+.firearm-modal-detail-value.highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  background: #f1f3f4;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.firearm-modal-detail-value.date-value {
+  font-family: 'Courier New', monospace;
+  color: #28a745;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-captured { background: #e9ecef; color: #495057; }
+.status-confiscated { background: #f8d7da; color: #721c24; }
+.status-surrendered { background: #d1ecf1; color: #0c5460; }
+.status-deposited { background: #d1ecf1; color: #0c5460; }
+.status-abandoned { background: #fff3cd; color: #856404; }
+.status-forfeited { background: #e2e3e5; color: #383d41; }
+
+.status-notes {
+  background: white;
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  line-height: 1.5;
+  min-height: 80px;
+}
+
+/* Animation */
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .landscape-body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .firearm-modal-content {
+    width: 95%;
+    margin: 10px;
+  }
+  
+  .firearm-modal-detail {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .firearm-modal-detail-value {
+    text-align: left;
+    max-width: 100%;
+  }
+}   
+
+.owner-municipality {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #e3f2fd;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.owner-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Owner Actions */
+.owner-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.delete-owner-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.delete-owner-btn:hover {
+  background: #c82333;
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.delete-owner-btn:active {
+  transform: translateY(0);
+}
+
+/* OwnerProfile-specific License Section Styles - Compact Version */
+.op-licenses-section {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.op-licenses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.op-license-card {
+  padding: 1.25rem;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border-left: 3px solid #004aad;
+  transition: all 0.2s;
+  min-height: 200px;
+}
+
+.op-license-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+.op-license-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.op-license-number {
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #2c3e50;
+}
+
+.op-license-status {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.op-license-status.active {
+  background-color: #e6f7e6;
+  color: #28a745;
+}
+
+.op-license-status.expired {
+  background-color: #fff3e6;
+  color: #fd7e14;
+}
+
+.op-license-status.revoked {
+  background-color: #fde8e8;
+  color: #dc3545;
+}
+
+.op-license-status.pending {
+  background-color: #e6f3ff;
+  color: #007bff;
+}
+
+.op-license-status.suspended {
+  background-color: #fff3e6;
+  color: #ff9800;
+}
+
+.op-license-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+}
+
+.op-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.op-detail-row span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #6c757d;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 0.7rem;
+}
+
+.op-detail-row span:last-child {
+  color: #2c3e50;
+  font-weight: 500;
+  text-align: right;
+  font-size: 0.75rem;
+  word-break: break-word;
+}
+
+.op-license-photo-preview {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #ddd;
+}
+
+.op-view-photo-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #004aad;
+  text-decoration: none;
+  font-size: 0.72rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.op-view-photo-btn:hover {
+  color: #003a8a;
+  text-decoration: underline;
+}
+
+.op-loading-licenses {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6c757d;
+  padding: 0.75rem 0;
+  font-size: 0.85rem;
+}
+
+.op-no-licenses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1rem;
+  color: #6c757d;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.op-no-licenses p {
+  margin: 0;
+}
+
+/* Responsive adjustments for OwnerProfile licenses */
+@media (max-width: 1024px) {
+  .op-licenses-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .op-license-card {
+    padding: 0.75rem;
+  }
+  
+  .op-detail-row {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  
+  .op-detail-row span:last-child {
+    text-align: left;
+  }
+}
+
+/* OwnerProfile-specific Firearms Section Styles - Compact Version */
+.op-firearms-section {
+  background: #f8fafc;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-top: 1.25rem;
+  border: 1px solid #e1e5eb;
+}
+
+.op-firearms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 0.75rem;
+}
+
+.op-firearm-box {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
+  border: 1px solid #e1e5eb;
+  transition: all 0.2s;
+  min-height: 200px;
+}
+
+.op-firearm-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.op-firearm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e1e5eb;
+}
+
+.op-firearm-type-model {
+  flex: 1;
+}
+
+.op-firearm-type {
+  font-weight: 600;
+  color: #004aad;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.op-firearm-model {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  color: #2c3e50;
+}
+
+.op-firearm-details {
+  margin-top: 0.75rem;
+}
+
+.op-firearm-detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+  font-size: 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.op-firearm-detail-row span:first-child {
+  color: #6b7280;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.op-firearm-detail-row span:last-child {
+  color: #2c3e50;
+  font-weight: 500;
+  text-align: right;
+  font-size: 0.75rem;
+  word-break: break-word;
+}
+
+.op-no-firearms {
+  text-align: center;
+  padding: 1.25rem;
+  color: #6b7280;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  border: 1px dashed #d1d5db;
+  font-size: 0.85rem;
+}
+
+.op-no-firearms p {
+  margin: 0;
+}
+
+/* Status badges for OwnerProfile firearms */
+.op-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.op-status-badge.confiscated {
+  background-color: #fee2e2;
+}
+
+.op-status-badge.active {
+  background-color: #dcfce7;
+}
+
+.op-status-badge.surrendered {
+  background-color: #dbeafe;
+}
+
+.op-status-badge.deposited {
+  background-color: #ede9fe;
+}
+
+.op-status-badge.abandoned {
+  background-color: #fef3c7;
+}
+
+.op-status-badge.captured {
+  background-color: #f3f4f6;
+}
+
+.op-status-badge.forfeited {
+  background-color: #e5e7eb;
+}
+
+/* Firearm View Details Button */
+.op-firearm-view-details-btn {
+  background: #004aad;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  margin-top: 1rem;
+  transition: all 0.2s;
+  font-weight: 500;
+  width: 100%;
+  justify-content: center;
+}
+
+.op-firearm-view-details-btn:hover {
+  background: #003a8a;
+  transform: translateY(-1px);
+}
+
+.op-firearm-view-details-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustments for OwnerProfile firearms */
+@media (max-width: 1024px) {
+  .op-firearms-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .op-firearm-box {
+    padding: 0.75rem;
+  }
+  
+  .op-firearm-detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+  
+  .op-firearm-detail-row span:last-child {
+    text-align: left;
+  }
+}
+
+/* Firearm Image Styles in Modal */
+.modal-column.image-column {
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.firearm-image-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  border: 2px solid #e1e5eb;
+  position: relative;
+}
+
+.firearm-image-container.clickable-image {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.firearm-image-container.clickable-image:hover {
+  border-color: #004aad;
+  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.2);
+  transform: scale(1.02);
+}
+
+.firearm-image-container.clickable-image .fullscreen-hint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.firearm-image-container.clickable-image:hover .fullscreen-hint {
+  opacity: 1;
+}
+
+.firearm-detail-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+}
+
+.no-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px;
+  color: #6c757d;
+}
+
+.no-image-placeholder svg {
+  color: #dee2e6;
+}
+
+.no-image-placeholder p {
+  margin: 0;
+  font-size: 14px;
+  color: #adb5bd;
+}
+
+/* Adjust landscape modal to accommodate image */
+.landscape-modal.firearm-modal-content {
+  max-width: 1200px;
+}
+
+.landscape-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.landscape-body:has(.image-column) {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 1024px) {
+  .landscape-body:has(.image-column) {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-column.image-column {
+    max-width: 100%;
+  }
+}
+
+/* Fullscreen Image Modal */
+.fullscreen-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+  cursor: zoom-out;
+}
+
+.fullscreen-modal {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: default;
+}
+
+.fullscreen-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10000;
+  color: #2c3e50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.fullscreen-close-btn:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.fullscreen-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-firearm-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.no-image-placeholder-fullscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.no-image-placeholder-fullscreen svg {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.no-image-placeholder-fullscreen p {
+  margin: 0;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Dark mode adjustments for fullscreen */
+.dark-mode .fullscreen-close-btn {
+  background: rgba(50, 50, 50, 0.9);
+  color: white;
+}
+
+.dark-mode .fullscreen-close-btn:hover {
+  background: rgba(70, 70, 70, 1);
+}
+
+/* Responsive fullscreen */
+@media (max-width: 768px) {
+  .fullscreen-modal {
+    width: 95vw;
+    height: 95vh;
+  }
+  
+  .fullscreen-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
 }

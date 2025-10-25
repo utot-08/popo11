@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {
   Search,
   Edit,
+  Eye,
   CheckCircle,
   XCircle,
   Archive,
@@ -25,58 +26,123 @@ import {
   Database,
   ShieldAlert,
 } from 'lucide-react';
+import { AlertCircle } from 'react-feather';
 import axios from 'axios';
 import '../styles/FirearmsStatus.css';
 
 const API_BASE_URL = 'http://127.0.0.1:8000/api/';
 
 const FirearmsStatus = () => {
-  const selectRef = useRef(null);
   const [firearms, setFirearms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [editingId, setEditingId] = useState(null);
-  const [newStatus, setNewStatus] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
+  const [dateFromFilter, setDateFromFilter] = useState('');
+  const [dateToFilter, setDateToFilter] = useState('');
   const [showStatusDropdown, setShowStatusDropdown] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [gunTypes, setGunTypes] = useState([]);
+  const [gunSubtypes, setGunSubtypes] = useState([]);
+  const [gunModels, setGunModels] = useState([]);
+  const [selectedFirearm, setSelectedFirearm] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalStatus, setModalStatus] = useState('');
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // Get current user from localStorage
+  useEffect(() => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      try {
+        setCurrentUser(JSON.parse(userData));
+      } catch (err) {
+        console.error('Error parsing user data:', err);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchGunData = async () => {
+      try {
+        const [typesRes, subtypesRes, modelsRes] = await Promise.all([
+          axios.get(`${API_BASE_URL}gun-types/`),
+          axios.get(`${API_BASE_URL}gun-subtypes/`),
+          axios.get(`${API_BASE_URL}gun-models/`),
+        ]);
+        setGunTypes(typesRes.data);
+        setGunSubtypes(subtypesRes.data);
+        setGunModels(modelsRes.data);
+      } catch (err) {
+        console.error('Error fetching gun data:', err);
+      }
+    };
+    fetchGunData();
+  }, []);
+
+  // Helper functions to get names from IDs
+  const getTypeName = (typeId) => {
+    if (!typeId) return 'Unknown Type';
+    const type = gunTypes.find((t) => t.id === typeId);
+    return type ? type.name : 'Unknown Type';
+  };
+
+  const getSubtypeName = (subtypeId) => {
+    if (!subtypeId) return 'Unknown Subtype';
+    const subtype = gunSubtypes.find((s) => s.id === subtypeId);
+    return subtype ? subtype.name : 'Unknown Subtype';
+  };
+
+  const getModelName = (modelId) => {
+    if (!modelId) return 'Unknown Model';
+    const model = gunModels.find((m) => m.id === modelId);
+    return model ? model.name : 'Unknown Model';
+  };
 
   useEffect(() => {
     fetchFirearms();
-  }, [refreshing]);
+  }, [refreshing, gunModels, currentUser]);
 
   const fetchFirearms = async () => {
     try {
       setLoading(true);
       setError(null);
 
-      // Fetch owners data which contains firearms
-      const response = await axios.get(`${API_BASE_URL}owners/`);
-      const ownersData = response.data;
+      const token = localStorage.getItem('access_token');
+      
+      // Fetch firearms with proper authentication
+      const response = await axios.get(`${API_BASE_URL}firearms/`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      
+      let firearmsList = Array.isArray(response.data) ? response.data : [];
+      
+      // Apply municipality filtering for administrators
+      if (currentUser?.role === 'administrator' && currentUser?.municipality) {
+        firearmsList = firearmsList.filter(firearm => {
+          // Check if firearm belongs to owner created by current user
+          // or matches the user's municipality
+          const ownerMunicipality = extractMunicipalityFromAddress(firearm.owner?.residential_address);
+          return ownerMunicipality && 
+                 ownerMunicipality.toLowerCase() === currentUser.municipality.toLowerCase();
+        });
+      }
 
-      // Extract and flatten all firearms from owners
-      const allFirearms = ownersData.flatMap((owner) =>
-        owner.firearms.map((firearm) => ({
-          ...firearm,
-          owner: {
-            // Include owner details with each firearm
-            id: owner.id,
-            full_legal_name: owner.full_legal_name,
-            contact_number: owner.contact_number,
-            license_status: owner.license_status,
-            residential_address: owner.residential_address,
-          },
-          // Add any additional fields needed for display
-          model: firearm.gun_model,
-          type: firearm.gun_type,
-          caliber: firearm.ammunition_type,
-          registered: true, // Assuming all are registered since they're in the system
-        }))
-      );
+      const allFirearms = firearmsList.map((firearm) => ({
+        ...firearm,
+        owner: firearm.owner && typeof firearm.owner === 'object' ? firearm.owner : {},
+        modelName: firearm.gun_model_details?.name || 'Unknown Model',
+        typeName: getTypeName(firearm.gun_type),
+        subtypeName: getSubtypeName(firearm.gun_subtype),
+        caliber: firearm.ammunition_type,
+        registered: true,
+      }));
 
-      setFirearms(allFirearms);
+      // Sort by ID in descending order (Last In First Out)
+      const sortedFirearms = allFirearms.sort((a, b) => (b.id || 0) - (a.id || 0));
+
+      setFirearms(sortedFirearms);
       setLoading(false);
       setRefreshing(false);
     } catch (err) {
@@ -87,29 +153,73 @@ const FirearmsStatus = () => {
     }
   };
 
+  // Helper function to extract municipality from address string
+  const extractMunicipalityFromAddress = (address) => {
+    if (!address || typeof address !== 'string') return null;
+    
+    // List of municipalities to check against
+    const municipalities = [
+      'Agoo', 'Aringay', 'Bacnotan', 'Bagulin', 'Balaoan', 'Bangar', 'Bauang', 
+      'Burgos', 'Caba', 'Luna', 'Naguilian', 'Pugo', 'Rosario', 'San Gabriel', 
+      'San Juan', 'Santo Tomas', 'Santol', 'Sudipen', 'Tubao'
+    ];
+    
+    const cleanAddress = address.toLowerCase().trim();
+    const sortedMunicipalities = [...municipalities].sort((a, b) => b.length - a.length);
+
+    for (const municipality of sortedMunicipalities) {
+      const lowerMun = municipality.toLowerCase();
+      
+      // Check for exact matches in different formats
+      const matchPatterns = [
+        `\\b${lowerMun}\\b`, // Word boundary match
+        `^${lowerMun},`,     // Start with municipality
+        `, ${lowerMun}$`,    // End with municipality
+        `, ${lowerMun},`,    // Municipality in middle
+        ` ${lowerMun}$`,     // Space then municipality at end
+        `^${lowerMun}$`      // Exact match
+      ];
+
+      for (const pattern of matchPatterns) {
+        const regex = new RegExp(pattern);
+        if (regex.test(cleanAddress)) {
+          return municipality; // Return with proper casing
+        }
+      }
+    }
+    
+    // Check if address contains any municipality name
+    const foundMunicipality = municipalities.find(municipality => 
+      address.toLowerCase().includes(municipality.toLowerCase())
+    );
+    
+    return foundMunicipality || null;
+  };
+
   const updateFirearmStatus = async (serialNumber, status) => {
     try {
-      // Check if a valid status was selected
       if (!status || status === 'Select status') {
         setError('Please select a valid status');
         return;
       }
 
-      // Convert status to lowercase to match backend exactly
+      const token = localStorage.getItem('access_token');
       const backendStatus = status.toLowerCase();
       await axios.patch(`${API_BASE_URL}firearms/${serialNumber}/status/`, {
         firearm_status: backendStatus,
+      }, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
+      
       setSuccessMessage(`Status updated successfully for ${serialNumber}`);
       setTimeout(() => setSuccessMessage(''), 3000);
       fetchFirearms();
+      setShowModal(false);
     } catch (err) {
       console.error('Error updating firearm status:', err);
       setError(
         err.response?.data?.message || 'Failed to update firearm status'
       );
-    } finally {
-      setEditingId(null);
     }
   };
 
@@ -119,64 +229,101 @@ const FirearmsStatus = () => {
     setSuccessMessage('');
   };
 
-  const startEditing = (firearm) => {
-    setEditingId(firearm.serial_number);
-    setNewStatus("Select status"); // Initialize with default option
-    setTimeout(() => {
-      if (selectRef.current) {
-        selectRef.current.focus();
-      }
-    }, 10);
+  const openModal = (firearm) => {
+    setSelectedFirearm(firearm);
+    setModalStatus(firearm.firearm_status);
+    setShowModal(true);
   };
 
-  const cancelEditing = () => {
-    setEditingId(null);
-    setNewStatus('');
-  };
-
-  const saveStatusChange = (serialNumber) => {
-    if (newStatus) {
-      updateFirearmStatus(serialNumber, newStatus);
-    }
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedFirearm(null);
+    setModalStatus('');
   };
 
   const getStatusIcon = (status) => {
-    switch (status) {
-      case 'Confiscated':
-        return <Gavel className="status-icon confiscated" size={18} />;
-      case 'Surrendered':
-        return <Hand className="status-icon surrendered" size={18} />;
-      case 'Deposit':
-        return <Box className="status-icon deposit" size={18} />;
-      case 'Abandoned': // Changed from 'Abandon'
-        return <ShieldAlert className="status-icon abandoned" size={18} />;
+    const lowerStatus = status?.toLowerCase();
+    switch (lowerStatus) {
+      case 'active':
+        return <CheckCircle className="status-icon active" size={14} />;
+      case 'expired':
+        return <XCircle className="status-icon expired" size={14} />;
+      case 'pending':
+        return <AlertTriangle className="status-icon pending" size={14} />;
+      case 'revoked':
+        return <XCircle className="status-icon revoked" size={14} />;
+      case 'suspended':
+        return <Archive className="status-icon suspended" size={14} />;
+      case 'captured':
+        return <Gavel className="status-icon captured" size={14} />;
+      case 'confiscated':
+        return <Gavel className="status-icon confiscated" size={14} />;
+      case 'surrendered':
+        return <Hand className="status-icon surrendered" size={14} />;
+      case 'deposited':
+        return <Box className="status-icon deposited" size={14} />;
+      case 'abandoned':
+        return <ShieldAlert className="status-icon abandoned" size={14} />;
+      case 'forfeited':
+        return <AlertCircle className="status-icon forfeited" size={14} />;
       default:
-        return <Database className="status-icon" size={18} />;
+        return <Database className="status-icon" size={14} />;
     }
   };
 
   const filteredFirearms = firearms.filter((firearm) => {
     const matchesSearch =
       firearm.serial_number.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      firearm.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      firearm.modelName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (firearm.owner &&
-        firearm.owner.full_legal_name
-          .toLowerCase()
+        firearm.owner_details?.full_legal_name
+          ?.toLowerCase()
           .includes(searchTerm.toLowerCase()));
 
     const matchesStatus =
       statusFilter === 'All' ||
-      (statusFilter === 'Deposit' && firearm.firearm_status === 'deposit') ||
-      (statusFilter === 'Confiscated' &&
-        firearm.firearm_status === 'confiscated') ||
-      (statusFilter === 'Surrendered' &&
-        firearm.firearm_status === 'surrendered') ||
-      (statusFilter === 'Abandoned' && firearm.firearm_status === 'abandoned');
+      firearm.firearm_status?.toLowerCase() === statusFilter.toLowerCase();
 
-    return matchesSearch && matchesStatus;
+    // Apply date range filter
+    let matchesDateRange = true;
+    if (dateFromFilter || dateToFilter) {
+      if (!firearm.date_of_collection) {
+        matchesDateRange = false;
+      } else {
+        const collectionDate = new Date(firearm.date_of_collection);
+        collectionDate.setHours(0, 0, 0, 0);
+
+        let matchesFrom = true;
+        let matchesTo = true;
+
+        if (dateFromFilter) {
+          const fromDate = new Date(dateFromFilter);
+          fromDate.setHours(0, 0, 0, 0);
+          matchesFrom = collectionDate >= fromDate;
+        }
+
+        if (dateToFilter) {
+          const toDate = new Date(dateToFilter);
+          toDate.setHours(23, 59, 59, 999);
+          matchesTo = collectionDate <= toDate;
+        }
+
+        matchesDateRange = matchesFrom && matchesTo;
+      }
+    }
+
+    return matchesSearch && matchesStatus && matchesDateRange;
   });
 
-  const statusOptions = ['All', 'Confiscated', 'Surrendered', 'Deposit', 'Abandoned'];
+  const statusOptions = [
+    'All',
+    'Captured',
+    'Confiscated',
+    'Surrendered',
+    'Deposited',
+    'Abandoned',
+    'Forfeited',
+  ];
 
   if (loading) {
     return (
@@ -191,6 +338,129 @@ const FirearmsStatus = () => {
 
   return (
     <div className="firearms-status-container">
+      {/* Modal */}
+      {showModal && selectedFirearm && (
+        <div className="fsm-overlay">
+          <div className="fsm-container">
+            <div className="fsm-header">
+              <div className="fsm-header-content">
+                <Crosshair size={20} className="fsm-icon" />
+                <h3 className="fsm-title">Firearm Status Update</h3>
+              </div>
+              <button 
+                onClick={closeModal} 
+                className="fsm-close-btn"
+                aria-label="Close modal"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="fsm-body">
+              <div className="fsm-details-card">
+                <div className="fsm-detail-item">
+                  <Shield size={16} className="fsm-detail-icon" />
+                  <div>
+                    <p className="fsm-detail-label">Serial Number</p>
+                    <p className="fsm-detail-value">{selectedFirearm.serial_number}</p>
+                  </div>
+                </div>
+                
+                <div className="fsm-detail-item">
+                  <Database size={16} className="fsm-detail-icon" />
+                  <div>
+                    <p className="fsm-detail-label">Model</p>
+                    <p className="fsm-detail-value">
+                      {selectedFirearm.modelName} • {selectedFirearm.typeName} • {selectedFirearm.caliber}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="fsm-detail-item">
+                  <User size={16} className="fsm-detail-icon" />
+                  <div>
+                    <p className="fsm-detail-label">Registered Owner</p>
+                    <p className="fsm-detail-value">
+                      {selectedFirearm.owner_details?.full_legal_name || 'Unknown'}
+                      {selectedFirearm.owner?.license_status && (
+                        <span className={`fsm-license-status ${selectedFirearm.owner.license_status.toLowerCase()}`}>
+                          {selectedFirearm.owner.license_status}
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="fsm-detail-item">
+                  <CalendarDays size={16} className="fsm-detail-icon" />
+                  <div>
+                    <p className="fsm-detail-label">Collection Date</p>
+                    <p className="fsm-detail-value">
+                      {new Date(selectedFirearm.date_of_collection).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="fsm-status-display">
+                  <div className="fsm-current-status">
+                    <p className="fsm-detail-label">Current Status</p>
+                    <div className={`fsm-status-badge ${selectedFirearm.firearm_status.toLowerCase()}`}>
+                      {getStatusIcon(selectedFirearm.firearm_status)}
+                      <span>{selectedFirearm.firearm_status}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="fsm-update-section">
+                <h4 className="fsm-update-title">Update Status</h4>
+                <p className="fsm-update-subtitle">Select the new status for this firearm</p>
+                
+                <div className="fsm-radio-group">
+                  {['active', 'expired', 'pending', 'revoked', 'suspended', 'captured', 'confiscated', 'surrendered', 'deposited', 'abandoned', 'forfeited'].map((status) => (
+                    <label key={status} className="fsm-radio-option">
+                      <input
+                        type="radio"
+                        name="firearmStatus"
+                        value={status}
+                        checked={modalStatus === status}
+                        onChange={() => setModalStatus(status)}
+                        className="fsm-radio-input"
+                      />
+                      <span className="fsm-radio-custom"></span>
+                      <span className="fsm-radio-label">
+                        {getStatusIcon(status)}
+                        {status.charAt(0).toUpperCase() + status.slice(1)}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="fsm-footer">
+              <button 
+                onClick={closeModal} 
+                className="fsm-secondary-btn"
+              >
+                Cancel
+              </button>
+              <button 
+                onClick={() => updateFirearmStatus(selectedFirearm.serial_number, modalStatus)}
+                className="fsm-primary-btn"
+                disabled={!modalStatus}
+              >
+                Confirm Status Update
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="firearms-header">
         <div className="header-title">
           <div className="header-icon-container">
@@ -200,6 +470,11 @@ const FirearmsStatus = () => {
             <h2>Firearms Status Management</h2>
             <p className="header-subtitle">
               View and update the status of firearms in the system
+              {currentUser?.role === 'administrator' && currentUser?.municipality && (
+                <span className="municipality-badge">
+                  • {currentUser.municipality} Municipality
+                </span>
+              )}
             </p>
           </div>
         </div>
@@ -271,7 +546,7 @@ const FirearmsStatus = () => {
                 />
               </button>
               {showStatusDropdown && (
-                <div className="status-dropdown">
+                <div className={`status-dropdown ${showStatusDropdown ? 'show' : ''}`}>
                   {statusOptions.map((option) => (
                     <button
                       key={option}
@@ -281,20 +556,47 @@ const FirearmsStatus = () => {
                         setShowStatusDropdown(false);
                       }}
                     >
-                      <div className="flex items-center gap-2">
-                        {option === 'All' ? (
-                          <Database size={16} />
-                        ) : (
-                          getStatusIcon(option)
-                        )}
-                        {option}
-                      </div>
+                      <span>{option}</span>
                     </button>
                   ))}
                 </div>
               )}
             </div>
           </div>
+        </div>
+
+        <div className="date-range-filters">
+          <div className="date-input-group">
+            <label className="date-label">From:</label>
+            <input
+              type="date"
+              value={dateFromFilter}
+              onChange={(e) => setDateFromFilter(e.target.value)}
+              className="date-input"
+            />
+          </div>
+          <div className="date-input-group">
+            <label className="date-label">To:</label>
+            <input
+              type="date"
+              value={dateToFilter}
+              onChange={(e) => setDateToFilter(e.target.value)}
+              className="date-input"
+            />
+          </div>
+          {(dateFromFilter || dateToFilter) && (
+            <button
+              className="clear-date-btn"
+              onClick={() => {
+                setDateFromFilter('');
+                setDateToFilter('');
+              }}
+              title="Clear date filters"
+            >
+              <X size={14} />
+              Clear Dates
+            </button>
+          )}
         </div>
       </div>
 
@@ -303,144 +605,104 @@ const FirearmsStatus = () => {
           <table className="firearms-table">
             <thead>
               <tr>
-                <th>
+                <th className="th-firearm-details">
                   <div className="table-header-cell">
                     <Crosshair size={16} />
                     <span>Firearm Details</span>
                   </div>
                 </th>
-                <th>
+                <th className="th-owner">
                   <div className="table-header-cell">
                     <User size={16} />
                     <span>Owner</span>
                   </div>
                 </th>
-                <th>
+                <th className="th-status">
                   <div className="table-header-cell">
                     <ScrollText size={16} />
                     <span>Status</span>
                   </div>
                 </th>
-                <th>
+                <th className="th-date">
                   <div className="table-header-cell">
                     <CalendarDays size={16} />
                     <span>Date</span>
                   </div>
                 </th>
-                <th>
+                <th className="th-location">
                   <div className="table-header-cell">
                     <MapPin size={16} />
                     <span>Location</span>
                   </div>
                 </th>
-                <th>Actions</th>
+                <th className="th-actions">
+                  <div className="table-header-cell">
+                    <Edit size={16} />
+                    <span>Actions</span>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
               {filteredFirearms.map((firearm) => (
-                <tr
-                  key={firearm.serial_number}
-                  className="hover:bg-gray-50 transition-colors"
-                >
-                  <td>
+                <tr key={firearm.serial_number}>
+                  <td className="td-firearm-details">
                     <div className="firearm-details">
-                      <div className="serial-number">
-                        <Shield size={14} />
-                        <strong>{firearm.serial_number}</strong>
+                      <div className="serial-number-row">
+                        <div className="serial-number">
+                          <Shield size={14} />
+                          <strong>{firearm.serial_number}</strong>
+                        </div>
+                        <div
+                          className={`registration-status ${firearm.registered ? 'registered' : 'unregistered'}`}
+                        >
+                          {firearm.registered ? (
+                            <>
+                              <CheckCircle size={12} />
+                              <span>Registered</span>
+                            </>
+                          ) : (
+                            <>
+                              <XCircle size={12} />
+                              <span>Unregistered</span>
+                            </>
+                          )}
+                        </div>
                       </div>
                       <div className="model-type">
-                        {firearm.model} • {firearm.type} • {firearm.caliber}
-                      </div>
-                      <div
-                        className={`registration-status ${firearm.registered ? 'registered' : 'unregistered'}`}
-                      >
-                        {firearm.registered ? (
-                          <>
-                            <CheckCircle size={14} />
-                            <span>Registered</span>
-                          </>
-                        ) : (
-                          <>
-                            <XCircle size={14} />
-                            <span>Unregistered</span>
-                          </>
-                        )}
+                        {firearm.modelName} • {firearm.typeName} •{' '}
+                        {firearm.subtypeName} • {firearm.caliber}
                       </div>
                     </div>
                   </td>
-                  <td className="owner-cell">
-                    <div className="flex items-center gap-2">
-                      <User size={14} className="text-gray-500" />
-                      <span>{firearm.owner?.full_legal_name || 'Unknown'}</span>
+                  <td className="td-owner">
+                    <User size={14} className="text-gray-500" />
+                    <span>{firearm.owner_details?.full_legal_name || 'Unknown'}</span>
+                  </td>
+                  <td className="td-status">
+                    <div className={`status-badge ${firearm.firearm_status.toLowerCase()}`}>
+                      {getStatusIcon(firearm.firearm_status)}
+                      <span>{firearm.firearm_status}</span>
                     </div>
                   </td>
-                  <td>
-                    {editingId === firearm.serial_number ? (
-                      <select
-                        ref={selectRef}
-                        value={newStatus}
-                        onChange={(e) => setNewStatus(e.target.value)}
-                        className="status-select"
-                      >
-                        <option value="Select status">Select status</option>
-                        <option value="Confiscated">Confiscated</option>
-                        <option value="Deposit">Deposit</option>
-                        <option value="Surrendered">Surrendered</option>
-                        <option value="Abandoned">Abandoned</option>
-                      </select>
-                    ) : (
-                      <div
-                        className={`status-badge ${firearm.firearm_status.toLowerCase()}`}
-                      >
-                        {getStatusIcon(firearm.firearm_status)}
-                        <span>{firearm.firearm_status}</span>
-                      </div>
-                    )}
+                  <td className="td-date">
+                    <CalendarDays size={14} className="text-gray-500" />
+                    <span>
+                      {new Date(firearm.date_of_collection).toLocaleDateString()}
+                    </span>
                   </td>
-                  <td className="date-cell">
-                    <div className="flex items-center gap-2">
-                      <CalendarDays size={14} className="text-gray-500" />
-                      <span>
-                        {new Date(
-                          firearm.date_of_collection
-                        ).toLocaleDateString()}
-                      </span>
-                    </div>
+                  <td className="td-location">
+                    <MapPin size={14} className="text-gray-500" />
+                    <span>{firearm.registration_location || 'Not specified'}</span>
                   </td>
-                  <td className="location-cell">
-                    <div className="flex items-center gap-2">
-                      <MapPin size={14} className="text-gray-500" />
-                      <span>
-                        {firearm.registration_location || 'Not specified'}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="actions-cell">
-                    {editingId === firearm.serial_number ? (
-                      <div className="edit-actions">
-                        <button
-                          className="save-btn"
-                          onClick={() =>
-                            saveStatusChange(firearm.serial_number)
-                          }
-                        >
-                          <Check size={16} />
-                          <span>Save</span>
-                        </button>
-                        <button className="cancel-btn" onClick={cancelEditing}>
-                          <X size={16} />
-                          <span>Cancel</span>
-                        </button>
-                      </div>
-                    ) : (
-                      <button
-                        className="edit-btn"
-                        onClick={() => startEditing(firearm)}
-                      >
-                        <Edit size={16} />
-                        <span>Edit</span>
-                      </button>
-                    )}
+                  <td className="td-actions">
+                    <button
+                      className="view-btn"
+                      onClick={() => openModal(firearm)}
+                    >
+                      <Eye size={16} />
+                      <span>View</span>
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -450,7 +712,12 @@ const FirearmsStatus = () => {
           <div className="no-results">
             <Search size={48} className="no-results-icon" />
             <h3>No firearms found</h3>
-            <p>Try adjusting your search or filter criteria</p>
+            <p>
+              {currentUser?.role === 'administrator' && currentUser?.municipality 
+                ? `No firearms found for ${currentUser.municipality} municipality matching your criteria`
+                : 'Try adjusting your search or filter criteria'
+              }
+            </p>
           </div>
         )}
       </div>

@@ -1,14 +1,20 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Shield, Home } from 'lucide-react';
 
 const Unauthorized = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="unauthorized-container">
-      <h1>Unauthorized Access</h1>
-      <p>You don't have permission to view this page.</p>
-      <button onClick={() => navigate(-1)}>Go Back</button>
-      <button onClick={() => navigate('/')}>Return to Login</button>
+      <div className="unauthorized-content">
+        <Shield className="unauthorized-icon" size={64} />
+        <h1>Access Denied</h1>
+        <p>You don't have permission to access this page.</p>
+        <div className="unauthorized-actions">
+          <Link to="/" className="btn btn-primary">
+            <Home size={16} />
+            Go to Dashboard
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
